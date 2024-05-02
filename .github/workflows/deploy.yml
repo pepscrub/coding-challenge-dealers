@@ -22,14 +22,14 @@ jobs:
           node-version: 12.x
 
       - name: Install Files
-        run: npm install
+        run: pnpm install
         working-directory: ${{ github.workspace }}
 
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
 
       - name: Build project
-        run: npm run build
+        run: pnpm run build
 
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v2
