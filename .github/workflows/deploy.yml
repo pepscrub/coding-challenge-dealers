@@ -20,7 +20,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
-      - run: npm ci
+
+      - name: Install Files
+        run: npm install
+        working-directory: ${{ github.workspace }}
 
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
