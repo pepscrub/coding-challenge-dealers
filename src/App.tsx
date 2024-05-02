@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useState } from "react"
 import { LoremIpsum } from "./components"
-import { Card } from "./components/card"
+import { CardItems } from "./components/card"
 import { CardGroup } from "./components/cardGroup"
 import { Hero } from "./components/hero/hero"
 
@@ -22,7 +22,7 @@ export const App = () => {
       <Hero text={heroLorem} />
       <CardGroup>
         {items.map((lorem, i) => (
-          <Card
+          <CardItems
             active={ i === selectedCard }
             key={`card-${i}`}
             title={`Heading ${i + 1}`}

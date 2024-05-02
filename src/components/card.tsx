@@ -1,6 +1,7 @@
 import { FC, PropsWithChildren, ReactNode } from "react";
 import { CARD_IMG } from "../constants";
 import { Button } from "./button";
+import { Container } from "./container";
 import { Image } from "./image";
 
 interface CommonProps extends PropsWithChildren {
@@ -23,7 +24,33 @@ interface CardPropsWithButton extends CommonProps {
 
 type CardProps = CardPropsWithButton | CardPropsNoButton;
 
-export const Card: FC<CardProps> = ({
+export const CardContent: FC<PropsWithChildren> = ({
+  children,
+}) => (
+  <div className="card-content">
+    {children}
+  </div>
+)
+
+export const CardActions: FC<PropsWithChildren> = ({
+  children
+}) => (
+  <div className="card-actions">
+    {children}
+  </div>
+)
+
+export const Card: FC<PropsWithChildren & { active?: boolean, onClick?: () => void }> = ({
+  active,
+  children,
+  onClick
+}) => (
+  <div className={`card${active ? ' active' : ''}`} onClick={onClick}>
+    {children}
+  </div>
+)
+
+export const CardItems: FC<CardProps> = ({
   active,
   button,
   buttonText,
@@ -34,18 +61,18 @@ export const Card: FC<CardProps> = ({
   imgUrl = CARD_IMG
 }) => {
   return (
-    <div className={`card${active ? ' active' : ''}`} onClick={onClick}>
+    <Card active={active} onClick={onClick}>
       <Image imgUrl={imgUrl} />
-      <div className="container">
-        <div className="card-content">
+      <Container>
+        <CardContent>
           {title && typeof title === 'string' ? <h2>{title}</h2> : title}
           {text && typeof text === 'string' ? <p>{text}</p> : text}
-          {children}
-        </div>
-        <div className="card-actions">
+        </CardContent>
+        <CardActions>
           {button && <Button>{buttonText}</Button>}
-        </div>
-      </div>
-    </div>
+        </CardActions>
+        {children}
+      </Container>
+    </Card>
   )
 }
