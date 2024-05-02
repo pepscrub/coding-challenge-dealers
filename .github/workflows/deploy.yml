@@ -19,12 +19,11 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
-          node-version: 16
+          node-version: 12.x
+      - run: npm ci
 
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
-        with:
-          persist-credentials: false
 
       - name: Build project
         run: npm run build
