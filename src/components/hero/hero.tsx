@@ -26,9 +26,9 @@ export const HeroContent: FC<PropsWithChildren & {imgUrl: string; darken: number
     </section>
 );
 
-export const HeroText: FC<PropsWithChildren & { text: ReactNode  }> = ({ children, text }) => (
+export const HeroText: FC<PropsWithChildren & { title?: string; text: ReactNode  }> = ({ children, title, text }) => (
   <article className="hero-text">
-    <h1 className="hero-title">Welcome to G Automotive</h1>
+    <h1 className="hero-title">{title ? title : 'Welcome to G Automotive'}</h1>
     {text}
     <Button style={{ marginTop: '1.5rem' }}>
       Contact Us
