@@ -1,3 +1,4 @@
 export * from './button';
-export * from './hero';
+export * from './hero/hero';
 export * from './loremIpsum';
+

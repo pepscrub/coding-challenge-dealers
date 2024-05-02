@@ -1,7 +1,8 @@
 import { ReactNode, useEffect, useState } from "react"
 import { LoremIpsum } from "./components"
 import { Card } from "./components/card"
-import { Hero } from "./components/hero"
+import { CardGroup } from "./components/cardGroup"
+import { Hero } from "./components/hero/hero"
 
 export const App = () => {
   const [selectedCard, setSelectedCard] = useState(1);
@@ -19,7 +20,7 @@ export const App = () => {
   return (
     <>
       <Hero text={heroLorem} />
-      <div className="card-container">
+      <CardGroup>
         {items.map((lorem, i) => (
           <Card
             active={ i === selectedCard }
@@ -31,7 +32,7 @@ export const App = () => {
             buttonText={`Button ${i + 1}`}
           />
         ))}
-      </div>
+      </CardGroup>
     </>
   )
 }

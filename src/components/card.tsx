@@ -1,6 +1,7 @@
 import { FC, PropsWithChildren, ReactNode } from "react";
 import { CARD_IMG } from "../constants";
 import { Button } from "./button";
+import { Image } from "./image";
 
 interface CommonProps extends PropsWithChildren {
   active?: boolean;
@@ -34,7 +35,7 @@ export const Card: FC<CardProps> = ({
 }) => {
   return (
     <div className={`card${active ? ' active' : ''}`} onClick={onClick}>
-      <img src={imgUrl} />
+      <Image imgUrl={imgUrl} />
       <div className="container">
         <div className="card-content">
           {title && typeof title === 'string' ? <h2>{title}</h2> : title}
